@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserProvider from './components/providers/UserProvider';
 import PresaleProvider from './components/providers/PresaleProvider';
+// eslint-disable-next-line
 import WalletProvider from './components/providers/WalletProvider';
 
 ReactDOM.render(
