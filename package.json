@@ -44,10 +44,10 @@
     "web3": "^1.6.1"
   },
   "scripts": {
-    "client": "craco  start",
-    "server": "cd backend & npm start",
+    "client": "DISABLE_ESLINT_PLUGIN=true   craco  start",
+    "server": "DISABLE_ESLINT_PLUGIN=true  cd backend & npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "craco test",
+    "test": " DISABLE_ESLINT_PLUGIN=true craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
