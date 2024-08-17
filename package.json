@@ -84,7 +84,7 @@
   },
   "overrides": {
     "postcss-flexbugs-fixes": {
-      "postcss": "^7.0.39"
+      
     }
   }
 }
