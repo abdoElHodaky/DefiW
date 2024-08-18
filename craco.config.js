@@ -24,8 +24,8 @@ module.exports = {
             os: require.resolve('os-browserify/browser'),
             stream: require.resolve('stream-browserify'),
             url:require.resolve('url'),
-            buffer:require.resolve('buffer'),
-            util:require.resolve('util')
+            buffer:require.resolve('buffer/'),
+            //util:require.resolve('util')
         },
       }
       return webpackConfig;
