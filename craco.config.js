@@ -1,4 +1,5 @@
 // craco.config.js
+const webpack = require('webpack');
 module.exports = {
   style: {
     postcss: {
