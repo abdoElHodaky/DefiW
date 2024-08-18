@@ -8,7 +8,7 @@ module.exports = {
       ],
     },
   },
-  webpack: {
+ /* webpack: {
     configure: webpackConfig => {
       const scopePluginIndex = webpackConfig.resolve.plugins.findIndex(
         ({ constructor }) => constructor && constructor.name === 'ModuleScopePlugin'
@@ -31,5 +31,25 @@ module.exports = {
       }
       return webpackConfig;
     },
-  },
+  },*/
+  webpack: {
+        configure: (webpackConfig) => {
+            webpackConfig.resolve.fallback = {
+                crypto: require.resolve('crypto-browserify'),
+                buffer: require.resolve('buffer/'),
+                stream: require.resolve('stream-browserify'),
+                https: require.resolve('https-browserify'),
+                os: require.resolve('os-browserify/browser'),
+                http: require.resolve('stream-http'),
+           
+            };
+            webpackConfig.plugins = [
+                ...webpackConfig.plugins,
+                new webpack.ProvidePlugin({
+                    process: 'process/browser',
+                }),
+            ];
+            return webpackConfig;
+        },
+    },
 }
