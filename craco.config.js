@@ -42,6 +42,7 @@ module.exports = {
                 https: require.resolve('https-browserify'),
                 os: require.resolve('os-browserify/browser'),
                 http: require.resolve('stream-http'),
+                assert:require.resolve("assert/")
            
             };
             webpackConfig.plugins = [
