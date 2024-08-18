@@ -37,6 +37,7 @@ module.exports = {
   },*/
   webpack: {
         configure: (webpackConfig) => {
+	  webpackConfig.resolve.plugins = config.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
          /*   webpackConfig.resolve.fallback = {
                 crypto: require.resolve('crypto-browserify'),
                 buffer: require.resolve('buffer/'),
