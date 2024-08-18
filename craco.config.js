@@ -43,7 +43,7 @@ module.exports = {
                 os: require.resolve('os-browserify/browser'),
                 http: require.resolve('stream-http'),
                 assert:require.resolve("assert/"),
-                process: require.resolve('process/browser'),
+                "process/browser": require.resolve('process/browser'),
            
             };
             webpackConfig.plugins = [
