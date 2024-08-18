@@ -1,4 +1,7 @@
-/*@import '~antd/dist/antd.css';*/
+@tailwind uitilities;
+@tailwind components;
+@tailwind base;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
