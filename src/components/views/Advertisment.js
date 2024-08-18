@@ -14,7 +14,7 @@ function Advertisment() {
   ]
   return (
 
-
+     <>
       <Row className="items-center mt-16">
         <Col xs={{span:20,offset:2}} md={{span:0}} className="mb-8">
           <img src="/assets/img/phone_large.png" className="w-full"/>
@@ -61,7 +61,7 @@ function Advertisment() {
 
 
       </Row>
-        
+     </>
     
   );
 }
