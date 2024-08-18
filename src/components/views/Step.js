@@ -18,7 +18,7 @@ function Step() {
   ]
   return (
 
-    
+    <>
       <div className="justify-center mt-32 overflow-hidden ">
         <p className="text-center text-3xl font-bold">{t('Help & Support')}</p>
         <div className="m-12 block md:flex flex-wrap  whitespace-nowrap md:whitespace-normal slide  " style={{ transform: `translate3d(${-1*index* 100}%, 0, 0)` }}>
@@ -37,7 +37,9 @@ function Step() {
         }
          
       </div>
-
+        
+          </>
+          <>
 
         <div className="slideshowDots md:hidden">
         {
@@ -52,7 +54,7 @@ function Step() {
         }
         </div>
       </div>
-
+          </>
 
 
       
