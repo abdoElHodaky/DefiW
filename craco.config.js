@@ -10,6 +10,10 @@ module.exports = {
       plugins: [
         require('tailwindcss'),
         require('autoprefixer'),
+	'postcss-antd-fixes': {
+         prefixes: ['vp-antd', 'ant'],
+         },
+    },
       ],
     },
   },
