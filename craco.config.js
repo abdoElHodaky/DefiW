@@ -24,7 +24,7 @@ module.exports = {
             os: require.resolve('os-browserify/browser'),
             stream: require.resolve('stream-browserify'),
             url:require.resolve('url'),
-            buffer:require.resolve('buffer/'),
+            buffer:false,
             //util:require.resolve('util')
         },
       }
