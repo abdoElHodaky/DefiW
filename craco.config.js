@@ -11,7 +11,7 @@ module.exports = {
       ],
     },
   },
- /* webpack: {
+  webpack: {
     configure: webpackConfig => {
       const scopePluginIndex = webpackConfig.resolve.plugins.findIndex(
         ({ constructor }) => constructor && constructor.name === 'ModuleScopePlugin'
@@ -34,8 +34,8 @@ module.exports = {
       }
       return webpackConfig;
     },
-  },*/
-  webpack: {
+  },
+/*  webpack: {
         configure: (webpackConfig) => {
             webpackConfig.resolve.fallback = {
                 crypto: require.resolve('crypto-browserify'),
@@ -54,12 +54,12 @@ module.exports = {
                     process: 'process/browser',
                     Buffer: ["buffer", "Buffer"],
                 }),*/
-               new NodePolyfillPlugin({
+             /*  new NodePolyfillPlugin({
 		        	 additionalAliases: ['process', 'buffer'],
 	           	}),
               
             ];
             return webpackConfig;
         },
-    },
+    },*/
 }
