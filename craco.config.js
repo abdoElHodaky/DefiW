@@ -25,6 +25,7 @@ module.exports = {
             stream: require.resolve('stream-browserify'),
             url:require.resolve('url'),
             buffer:false,
+            vm:false,
             //util:require.resolve('util')
         },
       }
