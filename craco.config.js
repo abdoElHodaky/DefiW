@@ -1,6 +1,8 @@
 // craco.config.js
 const webpack = require('webpack');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+
 
 module.exports = {
   style: {
@@ -37,7 +39,7 @@ module.exports = {
   },*/
   webpack: {
         configure: (webpackConfig) => {
-	  webpackConfig.resolve.plugins = config.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
+	  webpackConfig.resolve.plugins = webpackConfig.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
          /*   webpackConfig.resolve.fallback = {
                 crypto: require.resolve('crypto-browserify'),
                 buffer: require.resolve('buffer/'),
