@@ -37,7 +37,7 @@ module.exports = {
         configure: (webpackConfig) => {
             webpackConfig.resolve.fallback = {
                 crypto: require.resolve('crypto-browserify'),
-                //buffer: require.resolve('buffer/'),
+                buffer: require.resolve('buffer/'),
                 stream: require.resolve('stream-browserify'),
                 https: require.resolve('https-browserify'),
                 os: require.resolve('os-browserify/browser'),
@@ -50,6 +50,7 @@ module.exports = {
                 ...webpackConfig.plugins,
                 new webpack.ProvidePlugin({
                     process: 'process/browser',
+                    Buffer: ["buffer", "Buffer"],
                 }),
               
             ];
