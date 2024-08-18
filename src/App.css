@@ -4,8 +4,8 @@
 
 @import "tailwindcss/components";
 
-@import "tailwindcss/utilities";
-/*@import 'antd/dist/antd.css'; */
+@import "tailwindcss/utilities"; */
+@import 'antd/dist/antd.css'; 
 
 body{
   overflow-x: hidden;
