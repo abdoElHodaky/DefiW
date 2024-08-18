@@ -46,6 +46,7 @@ function PresaleCard(props) {
   }
   
   return (
+    <>
     <Col xs={{span:22,offset:1}} lg={{span:7}}
         className=" bg-gray-200 rounded-xl p-6 mt-12 ">
       
@@ -84,6 +85,7 @@ function PresaleCard(props) {
         <a target="_blank" href={props.link} className="myButton text-white rounded-lg px-6  myBule font-bold text-sm xl:text-lg">View IEO</a>
       </div>
     </Col>
+    </>
   );
 }
 export default PresaleCard;
