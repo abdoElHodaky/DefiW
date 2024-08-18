@@ -11,6 +11,7 @@ function TouchCard() {
   ]
   const { scrollYProgress } = useViewportScroll();
   return (
+    <>
     <div className="flex justify-between flex-col md:flex-row">
      {
       inf.map((item,index)=>(
@@ -26,6 +27,7 @@ function TouchCard() {
       ))
       }
     </div>
+    </>
   );
 }
 
