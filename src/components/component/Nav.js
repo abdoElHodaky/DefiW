@@ -44,6 +44,7 @@ function Nav(props) {
     // {icon:<BsCash size={30} className="inline mx-4"/>,title:t('Crash Balance'),subtitle:t('Buy crypto with your EUR balance')},
 ]
   const menu = (
+    <>
     <div className="mt-4 rounded-xl py-4 pl-2 pr-8 flex bg-white flex-wrap shadow">
       <div className="flex flex-col flex-wrap">
         
@@ -77,9 +78,11 @@ function Nav(props) {
       </div>
       
     </div>
+    </>
   );
 
   const buySubmenu = (
+    <>
     <div className="mt-4 rounded-xl pl-4 pr-8 pt-2 pb-4  bg-white  shadow">
       <p className="text-md font-bold">{t('Pay with')}</p>
       <div className="mt-2">
@@ -96,14 +99,15 @@ function Nav(props) {
       }
       </div>
     </div>
+     </>
   );
   const profile = (
+    <>
     <div className="rounded-xl p-4  flex flex-col bg-white flex-wrap shadow">
         <Link to="/wallet/4">{t('Profile')}</Link>
         <Link to="/" onClick={logout}>{t('Log out')}</Link>
-
-      
     </div>
+  </>
   );
 
   return (
