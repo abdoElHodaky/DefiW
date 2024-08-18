@@ -21,7 +21,7 @@ import {
   Route
 } from "react-router-dom";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+/*import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBZMmYAXfwIgeij2zd2dOzMsdBKWLG3-ME",
@@ -33,10 +33,10 @@ const firebaseConfig = {
   measurementId: "G-PL0D18H80Q"
 };
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const analytics = getAnalytics(app); */
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
-console.log(analytics)
+//console.log(analytics)
 function App() {
   useEffect(() => {
     localStorage.removeItem("user");
