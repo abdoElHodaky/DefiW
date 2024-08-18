@@ -42,13 +42,14 @@ module.exports = {
                 https: require.resolve('https-browserify'),
                 os: require.resolve('os-browserify/browser'),
                 http: require.resolve('stream-http'),
-                assert:require.resolve("assert/")
+                assert:require.resolve("assert/"),
+                process:require.resolve("process/"),
            
             };
             webpackConfig.plugins = [
                 ...webpackConfig.plugins,
                 new webpack.ProvidePlugin({
-                    process: 'process/browser.js',
+                    process: 'process/browser',
                 }),
             ];
             return webpackConfig;
