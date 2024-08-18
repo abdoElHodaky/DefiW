@@ -49,7 +49,7 @@ module.exports = {
             webpackConfig.plugins = [
                 ...webpackConfig.plugins,
                 new webpack.ProvidePlugin({
-                    process: 'process',
+                    process: 'process/browser',
                 }),
             ];
             return webpackConfig;
