@@ -16,6 +16,7 @@ const timeoutRef = useRef(null);
 
 
   return (
+    <>
     <div className="w-11/12 xl:w-5/6 m-auto mt-8 overflow-hidden">
        <div className="whitespace-nowrap slide " style={{ transform: `translate3d(${-1*index* 100}%, 0, 0)` }}>
        {
@@ -44,6 +45,7 @@ const timeoutRef = useRef(null);
         }
         </div> 
       </div> 
+         </>
   );
 }
 
