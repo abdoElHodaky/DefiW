@@ -1,5 +1,7 @@
 // craco.config.js
 const webpack = require('webpack');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
 module.exports = {
   style: {
     postcss: {
@@ -48,10 +50,13 @@ module.exports = {
             };
             webpackConfig.plugins = [
                 ...webpackConfig.plugins,
-                new webpack.ProvidePlugin({
+               /* new webpack.ProvidePlugin({
                     process: 'process/browser',
                     Buffer: ["buffer", "Buffer"],
-                }),
+                }),*/
+               new NodePolyfillPlugin({
+		        	 additionalAliases: ['process', 'buffer'],
+	           	}),
               
             ];
             return webpackConfig;
