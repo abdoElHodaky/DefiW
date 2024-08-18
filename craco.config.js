@@ -55,7 +55,7 @@ module.exports = {
                     Buffer: ["buffer", "Buffer"],
                 }),*/
               new NodePolyfillPlugin({
-               additionalAliases: ['process', 'buffer'],
+               additionalAliases: ['process', 'Buffer'],
 	    }),
               
             ];
