@@ -38,8 +38,7 @@ function Step() {
          
       </div>
         
-          </>
-          <>
+          
 
         <div className="slideshowDots md:hidden">
         {
