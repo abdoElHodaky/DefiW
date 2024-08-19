@@ -8,39 +8,15 @@ module.exports = {
   style: {
     postcss: {
       plugins: [
+	     "postcss-antd-fixes": {
+         prefixes:['vp-antd', 'ant']
+	     
+	     }, 
         require('tailwindcss'),
         require('autoprefixer'),
-	'postcss-antd-fixes': {
-         prefixes: ['vp-antd', 'ant'],
-         },
-    },
       ],
     },
   },
-  /*webpack: {
-    configure: webpackConfig => {
-      const scopePluginIndex = webpackConfig.resolve.plugins.findIndex(
-        ({ constructor }) => constructor && constructor.name === 'ModuleScopePlugin'
-      );
-
-      webpackConfig.resolve.plugins.splice(scopePluginIndex, 1);
-      webpackConfig['resolve'] = {
-        fallback: {
-           assert: false,
-            crypto: require.resolve('crypto-browserify'),
-            http: require.resolve('stream-http'),
-            https: require.resolve('https-browserify'),
-            os: require.resolve('os-browserify/browser'),
-            stream: require.resolve('stream-browserify'),
-            url:require.resolve('url'),
-            buffer:false,
-            vm:false,
-            //util:require.resolve('util')
-        },
-      }
-      return webpackConfig;
-    },
-  },*/
   webpack: {
         configure: (webpackConfig) => {
 	  webpackConfig.resolve.plugins = webpackConfig.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
