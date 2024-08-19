@@ -30,8 +30,7 @@ const timeoutRef = useRef(null);
        }
           
         </div> 
-      </>
-      <>
+      
         <div className="slideshowDots md:hidden">
         {
           card.map((item,idx)=>(
