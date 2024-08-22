@@ -1,6 +1,11 @@
-@tailwind uitilities;
+/*@tailwind uitilities;
 @tailwind components;
-@tailwind base;
+@tailwind base;*/
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities"
 
 body {
   margin: 0;
