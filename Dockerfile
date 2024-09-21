@@ -14,7 +14,7 @@ ENV ENABLE_OVERCOMMIT_MEMORY=true
 #ENV MONGO_URI=mongodb+srv://abdoarh36:TyWF4ABOefQhJFbP@cluster0.bc7sxu7.mongodb.net/mernfreelancemarket
 RUN mkdir -p backend/public
 RUN yarn install && \
-npm run build && \
+npm run client && \
 cp -r build/. backend/public && \
 cd backend && npm install
 EXPOSE 3000 
