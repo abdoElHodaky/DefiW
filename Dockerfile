@@ -15,7 +15,7 @@ ENV ENABLE_OVERCOMMIT_MEMORY=true
 RUN mkdir -p backend/public
 RUN yarn install && \
 npm run build && \
-cp -r build/. public && \
+cp -r build/. server/public && \
 cd server && npm install
 EXPOSE 8800 
 CMD ["node","api/server.js"]
