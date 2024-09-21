@@ -15,8 +15,8 @@ ENV ENABLE_OVERCOMMIT_MEMORY=true
 RUN mkdir -p backend/public
 RUN yarn install && \
 npm run build && \
-cp -r build/. server/public && \
-cd server && npm install
-EXPOSE 8800 
-CMD ["node","api/server.js"]
+cp -r build/. backend/public && \
+cd backend && npm install
+EXPOSE 3000 
+CMD ["node","backend/src/server.js"]
 #CMD ["/usr/bin/supervisord","-c","./supervisord.conf"]
