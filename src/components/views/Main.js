@@ -35,7 +35,7 @@ function Main(props) {
     <>
      {!regPage ? 
        <div className="relative mb-0">
-       /*<!--img src="/assets/img/background2.png" className="w-screen absolute top-0 back"/-->*/
+       <img src="/assets/img/background2.png" className="w-screen absolute top-0 back"/>
        {/*<img src="./assets/img/earth2.png" className="absolute w-2/3 bottom-0 right-0" />*/}
        
          <div className="w-11/12 xl:w-5/6 m-auto ">
