@@ -1,4 +1,4 @@
-module.exports = {
+exports = {
   "globDirectory": ".",
   "globPatterns": [
     "**/*.{css,html,js,jpg,png,ico}"
