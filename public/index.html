@@ -35,6 +35,24 @@
      <link rel="stylesheet"  href="/assets/css/wallet.css"/>
     
     <title>MGL Exchange</title>
+   <script>
+      window.addEventListener('load', () => {
+   if ("serviceWorker" in navigator) {
+      // Register a service worker hosted at the root of the
+      // site using the default scope.
+      navigator.serviceWorker.register("sw.js",{scope:"/"}).then(
+      (registration) => {
+         console.log("Service worker registration succeeded:", registration);
+      },
+      (error) => {
+         console.error(`Service worker registration failed: ${error}`);
+      },
+    );
+  } else {
+     console.error("Service workers are not supported.");
+  }
+      });
+</script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -49,46 +67,14 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="sw.js"></script>
     <script src="//code.tidio.co/p6no2fcnpqz3unkoitfpyx5f56voa1m0.js"></script>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
     <script src="https://unpkg.com/browse/antd@4.16.5/dist/antd.js
 "></script>
     <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-   if ("serviceWorker" in navigator) {
-      // Register a service worker hosted at the root of the
-      // site using the default scope.
-      navigator.serviceWorker.register("sw.js").then(
-      (registration) => {
-         console.log("Service worker registration succeeded:", registration);
-      },
-      (error) => {
-         console.error(`Service worker registration failed: ${error}`);
-      },
-    );
-  } else {
-     console.error("Service workers are not supported.");
-  }
-</script>
-    <script>
-    window.addEventListener("beforeinstallprompt", (e) => {
-        // Prevent the mini-infobar from appearing on mobile
-        e.preventDefault();
-
-        // Stash the event so it can be triggered later.
-        window.deferredPrompt = e;
-        console.log("Registerd event");
-        // Update UI notify the user they can install the PWA
-        window.localStorage.setItem("pwainstalled", "false");
-        //this.showInstallPromotion();
-    });
-    window.addEventListener("appinstalled", (evt) => {
-        // Log install to analytics
-        console.log("INSTALL: Success");
-        window.localStorage.setItem("pwainstalled", "true");
-    });
-</script>
+        
+    
+    
     <script>eruda.init();</script>
     
   </body>
