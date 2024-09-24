@@ -1,4 +1,4 @@
-importScripts(
+/*importScripts(
   'https://storage.googleapis.com/workbox-cdn/releases/7.1.0/workbox-sw.js'
 );
 const {
@@ -16,7 +16,7 @@ const {BackgroundSyncPlugin,Queue}=workbox.BackgroundSyncPlugin
 const queue=new Queue("requests")
 workbox.setConfig({
     debug:true
-});
+});*/
 const CACHE="DEFIW_Cache";
 const preLoad = function () {
     return caches.open(CACHE).then(function (cache) {
@@ -74,7 +74,7 @@ self.addEventListener("fetch", function (event) {
         event.waitUntil(addToCache(event.request));
     }
 });
-if (workbox.navigationPreload.isSupported()) {
+/*if (workbox.navigationPreload.isSupported()) {
   workbox.navigationPreload.enable();
 }
 self.addEventListener("message", (event) => {
@@ -103,7 +103,7 @@ self.addEventListener("message", (event) => {
     })());
   }
 });*/
-
+/*
 self.addEventListener('fetch', (event) => {
   // Add in your own criteria here to return early if this
   // isn't a request that should use background sync.
