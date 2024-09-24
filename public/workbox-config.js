@@ -1,4 +1,4 @@
-exports = {
+export default {
   "globDirectory": ".",
   "globPatterns": [
     "**/*.{css,html,js,jpg,png,ico}"
