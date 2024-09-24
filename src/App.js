@@ -42,11 +42,12 @@ function App() {
     localStorage.removeItem("user");
   }, []);
   useEffect(()=>{
+    setTimeout(()=>{
     navigator.serviceWorker.register("/sw.js",{
       scope:"/"
     })
       .then(console.log).catch(console.error)
-  },[])
+  },15000)},[])
   return (
      <BrowserRouter>
         <Routes>
