@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 import React, { useState, useEffect } from 'react';
-import * as serviceWorkerRegistration from './swreg'
+//import * as serviceWorkerRegistration from './swreg'
 import Home from './components/pages/Home.js';
 import Register from './components/pages/Register.js';
 import WalletLanding from './components/pages/WalletLanding/WalletLanding.js';
@@ -41,7 +41,10 @@ function App() {
   useEffect(() => {
     localStorage.removeItem("user");
   }, []);
-  serviceWorkerRegistration.register({})
+  useEffect(()=>{
+    navigator.serviceWorker.register("/sw.js")
+      .then(console.log).catch(console.error)
+  },[])
   return (
      <BrowserRouter>
         <Routes>
