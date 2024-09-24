@@ -2,7 +2,7 @@
   "short_name": "MGL",
   "name": "MGL",
   "id":"MGL_345",
-  "description": "",
+  "description": "App for Coin Trading",
   "iconPath": "favicon32.png",
   "icons": [
     {
@@ -34,7 +34,7 @@
   ],
   "edge_side_panel": {
     "preferred_width": 100
-  }
+  },
   "display_override": [
     "browser",
     "window-controls-overlay",
