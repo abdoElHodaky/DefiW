@@ -40,5 +40,6 @@
     "window-controls-overlay",
     "minimal-ui",
     "standalone"
-  ]
+  ],
+  "launch_handler":"auto",
 }
