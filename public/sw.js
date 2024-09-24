@@ -54,8 +54,8 @@ const addToCache = function (request) {
     });
 };
 
-/*const returnFromCache = function (request) {
-    return caches.open("offline").then(function (cache) {
+const returnFromCache = function (request) {
+    return caches.open(CACHE).then(function (cache) {
         return cache.match(request).then(function (matching) {
             if (!matching || matching.status === 404) {
                 return cache.match("offline.html");
@@ -64,16 +64,16 @@ const addToCache = function (request) {
             }
         });
     });
-};*/
+};
 
-/*self.addEventListener("fetch", function (event) {
+self.addEventListener("fetch", function (event) {
     event.respondWith(checkResponse(event.request).catch(function () {
         return returnFromCache(event.request);
     }));
     if(!event.request.url.startsWith('http')){
         event.waitUntil(addToCache(event.request));
     }
-});*/
+});
 if (workbox.navigationPreload.isSupported()) {
   workbox.navigationPreload.enable();
 }
@@ -82,7 +82,7 @@ self.addEventListener("message", (event) => {
     self.skipWaiting();
   }
 });
-self.addEventListener('fetch', (event) => {
+/*self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith((async () => {
       try {
@@ -102,7 +102,7 @@ self.addEventListener('fetch', (event) => {
       }
     })());
   }
-});
+});*/
 
 self.addEventListener('fetch', (event) => {
   // Add in your own criteria here to return early if this
@@ -124,7 +124,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(bgSyncLogic());
 });
 
-pageCache();
+/*pageCache();
 
 googleFontsCache();
 
@@ -133,7 +133,7 @@ staticResourceCache();
 imageCache();
 
 offlineFallback();
-/*
+
 const networkWithFallbackStrategy = new NetworkOnly({
   networkTimeoutSeconds: 5,
   plugins: [
