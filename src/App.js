@@ -42,7 +42,9 @@ function App() {
     localStorage.removeItem("user");
   }, []);
   useEffect(()=>{
-    navigator.serviceWorker.register("/sw.js")
+    navigator.serviceWorker.register("/sw.js",{
+      scope:"/"
+    })
       .then(console.log).catch(console.error)
   },[])
   return (
