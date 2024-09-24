@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
     localStorage.removeItem("user");
   }, []);
-  serviceWorkerRegistration.register()
+  serviceWorkerRegistration.register({})
   return (
      <BrowserRouter>
         <Routes>
