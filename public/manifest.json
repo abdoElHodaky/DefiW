@@ -10,7 +10,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html?q=t",
+  "start_url": "./index.html?source=pwa",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
