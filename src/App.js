@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 import React, { useState, useEffect } from 'react';
-//import './App.css';
+import * as serviceWorkerRegistration from './swreg'
 import Home from './components/pages/Home.js';
 import Register from './components/pages/Register.js';
 import WalletLanding from './components/pages/WalletLanding/WalletLanding.js';
@@ -41,6 +41,7 @@ function App() {
   useEffect(() => {
     localStorage.removeItem("user");
   }, []);
+  serviceWorkerRegistration.register()
   return (
      <BrowserRouter>
         <Routes>
