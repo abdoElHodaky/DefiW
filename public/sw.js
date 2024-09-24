@@ -1,7 +1,13 @@
 importScripts(
   'https://storage.googleapis.com/workbox-cdn/releases/7.1.0/workbox-sw.js'
 );
-
+const {
+  pageCache,
+  imageCache,
+  staticResourceCache,
+  googleFontsCache,
+  offlineFallback,
+} = workbox.recipes;
 const {registerRoute, NavigationRoute,Route } = workbox.routing;
 const {CacheFirst,NetworkOnly,NetworkFirst} = workbox.strategies;
 const {CacheableResponse} = workbox.cacheableResponse;
@@ -24,7 +30,6 @@ self.addEventListener("install", function (event) {
 });
 
 const filesToCache = [
-    '/',
     '/offline.html'
 ];
 
@@ -96,6 +101,16 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(bgSyncLogic());
 });
 
+pageCache();
+
+googleFontsCache();
+
+staticResourceCache();
+
+imageCache();
+
+offlineFallback();
+/*
 const networkWithFallbackStrategy = new NetworkOnly({
   networkTimeoutSeconds: 5,
   plugins: [
@@ -164,3 +179,4 @@ registerRoute(
   ]
 }))
 );
+*/
