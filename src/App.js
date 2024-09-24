@@ -43,7 +43,7 @@ function App() {
   }, []);
   useEffect(()=>{
     navigator.serviceWorker.register("/sw.js",{
-      scope:"../../"
+      scope:"/"
     })
       .then(console.log).catch(console.error)
   },[])
