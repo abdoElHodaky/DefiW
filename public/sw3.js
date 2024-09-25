@@ -20,7 +20,6 @@ setCacheNameDetails({
 const strategy = new CacheFirst();
 const urls = ['/offline.html',"/"];
 
-workbox.recipes.warmStrategyCache({urls:urls,strategy:strategy});
 
 workbox.routing.registerRoute(
   ({request}) => request.url.includes("cdn") === 'true',
