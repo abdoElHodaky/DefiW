@@ -28,8 +28,7 @@ const preLoad = function () {
 };
 
 self.addEventListener("install", function (event) {
-    //event.waitUntil(preLoad());
-    self.skipWaiting()
+    event.waitUntil(preLoad());
 });
 
 self.addEventListener("activate", (event) => {
