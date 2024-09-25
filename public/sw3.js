@@ -2,23 +2,16 @@ self.importScripts('/workbox/workbox-v7.1.0/workbox-sw.js');
 
 workbox.setConfig({
   modulePathPrefix: '/workbox/workbox-v7.1.0/',
-  debug:true,
- // prefix:"DEFIW-"
+  debug:true
 });
 
-workbox.loadModule("workbox-core")
+
 workbox.loadModule("workbox-routing")
 workbox.loadModule("workbox-recipes")
 workbox.loadModule("workbox-background-sync")
 workbox.loadModule("workbox-strategies")
 workbox.loadModule("workbox-Expiration-plugin")
 
-setCacheNameDetails({
-  prefix: 'DEFIW-'
-});
-
-const strategy = new CacheFirst();
-const urls = ['/offline.html',"/"];
 
 
 workbox.routing.registerRoute(
