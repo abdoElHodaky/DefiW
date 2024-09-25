@@ -13,7 +13,7 @@ precacheAndRoute([{"revision":"23d4782fdca7dd73affb72a2f29aa96e","url":"assets/c
 workbox.setConfig({
     debug:true
 });
-const CACHE="LMS_Cache";
+const CACHE="DefiW_Cache";
 const preLoad = function () {
     return caches.open(CACHE).then(function (cache) {
         // caching index and important routes
