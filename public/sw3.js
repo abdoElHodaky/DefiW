@@ -2,13 +2,19 @@ self.importScripts('/workbox/workbox-v7.1.0/workbox-sw.js');
 
 workbox.setConfig({
   modulePathPrefix: '/workbox/workbox-v7.1.0/',
-  debug:true
+  debug:true,
+  predif:"DEFIW"
 });
 workbox.loadModule("workbox-routing")
 workbox.loadModule("workbox-recipes")
 workbox.loadModule("workbox-background-sync")
 workbox.loadModule("workbox-strategies")
 workbox.loadModule("workbox-Expiration-plugin")
+
+const strategy = new CacheFirst();
+const urls = ['/offline.html',"/"];
+
+workbox.recipes.warmStrategyCache({urls, strategy});
 
 workbox.routing.registerRoute(
   ({request}) => request.url.includes("cdn") === 'true',
