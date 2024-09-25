@@ -14,7 +14,7 @@ workbox.loadModule("workbox-Expiration-plugin")
 
 
 
-workbox.routing.registerRoute(
+registerRoute(
   ({request}) => request.url.includes("cdn") === 'true',
   new CacheFirst({
     cacheName: 'cdns',
@@ -26,7 +26,7 @@ workbox.routing.registerRoute(
     ],
   })
 );
-
+/*
 const queue = new Queue('ApiQueue');
 
 self.addEventListener('fetch', event => {
