@@ -1,7 +1,23 @@
 importScripts(
   'https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js'
 );
-
+workbox.routing.registerRoute(
+  new workbox.routing.Route(({url}) => {
+  return url.includes("cdn") == true;
+}, new workbox.strategies.NetworkFirst({
+  cacheName:"cdns",
+  plugins: [
+    new workbox.cacheableResponse.CacheableResponsePlugin({
+      statuses: [0, 200]
+    }),
+      new workbox.ExpirationPlugin.ExpirationPlugin({
+       maxEntries: 60,
+       maxAgeSeconds: 30 * 24 * 60 * 60 ,
+       purgeOnQuotaError: true
+        })
+  ]
+}))
+);
 // This will work!
 
 //const {registerRoute, NavigationRoute,Route } = workbox.routing
@@ -17,6 +33,7 @@ workbox.setConfig({
     debug:true
 });
 const CACHE="DefiW_Cache";
+/*
 /*const preLoad = function () {
     return caches.open(CACHE).then(function (cache) {
         // caching index and important routes
@@ -27,7 +44,7 @@ const CACHE="DefiW_Cache";
 self.addEventListener("install", function (event) {
     event.waitUntil(preLoad());
 });
-*/
+
 const filesToCache = [
     '/',
     '/offline.html'
@@ -152,29 +169,3 @@ registerRoute(
 );
 
 */
-workbox.recipes.pageCache();
-
-workbox.recipes.googleFontsCache();
-
-workbox.recipes.staticResourceCache();
-
-workbox.recipes.imageCache();
-
-workbox.recipes.offlineFallback();
-workbox.routing.registerRoute(
-  new workbox.routing.Route(({url}) => {
-  return url.includes("cdn") == true;
-}, new workbox.strategies.NetworkFirst({
-  cacheName:"cdns",
-  plugins: [
-    new workbox.cacheableResponse.CacheableResponsePlugin({
-      statuses: [0, 200]
-    }),
-      new workbox.ExpirationPlugin.ExpirationPlugin({
-       maxEntries: 60,
-       maxAgeSeconds: 30 * 24 * 60 * 60 ,
-       purgeOnQuotaError: true
-        })
-  ]
-}))
-);
