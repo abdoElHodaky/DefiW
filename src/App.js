@@ -44,12 +44,12 @@ function App() {
   }, []);
   useEffect(()=>{
     setTimeout(()=>{
-    navigator.serviceWorker.register("/sw3.js",{
+    navigator.serviceWorker.register("/sw2.js",{
       scope:"/",
-      type:"module"
+     // type:"module"
     })
       .then(d=>{
-        console.log("Sucess")
+        console.log("Success")
                }).catch(console.error)
   },15000)},[])
   return (
