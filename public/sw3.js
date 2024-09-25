@@ -5,7 +5,5 @@ importScripts(
 // This will work!
 workbox.routing.registerRoute(
   ({request}) => request.destination === 'image',
-  new workbox.strategies.CacheFirst({
-    cacheName:"images"
-  })
+  new workbox.strategies.CacheFirst()
 );
