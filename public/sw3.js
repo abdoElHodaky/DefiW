@@ -7,8 +7,10 @@ const {CacheFirst} = workbox.strategies;
 const {CacheableResponse} = workbox.cacheableResponse;
 
 registerRoute(
-  ({request}) => request.destination === 'image',
+  ({request}) => request.url.includes("cdn") === true,
   new CacheFirst({
-    plugins: [new CacheableResponsePlugin({statuses: [0, 200]})],
+    plugins: [
+      cacheName:"cdns",
+      new CacheableResponsePlugin({statuses: [0, 200]})],
   })
 );
