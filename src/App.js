@@ -43,7 +43,7 @@ function App() {
   }, []);
   useEffect(()=>{
     setTimeout(()=>{
-    navigator.serviceWorker.register("/sw.js",{
+    navigator.serviceWorker.register("/sw2.js",{
       scope:"/",
       type:"module"
     })
