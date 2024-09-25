@@ -35,7 +35,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app); */
 window.Buffer = window.Buffer || require("buffer").Buffer;
-
+navigator.serviceWorker.
+  getRegistration("/").then(d=>d.unregister()).catch(console.log)
 //console.log(analytics)
 function App() {
   useEffect(() => {
@@ -43,7 +44,7 @@ function App() {
   }, []);
   useEffect(()=>{
     setTimeout(()=>{
-    navigator.serviceWorker.register("/sw3.js",{
+    navigator.serviceWorker.register("/sw2.js",{
       scope:"/",
       type:"module"
     })
