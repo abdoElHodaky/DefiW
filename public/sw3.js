@@ -1,4 +1,4 @@
-self.importScripts('/workbox/workbox-v7.1.0/workbox-sw.js');
+importScripts('/workbox/workbox-v7.1.0/workbox-sw.js');
 
 workbox.setConfig({
   modulePathPrefix: '/workbox/workbox-v7.1.0/',
@@ -7,10 +7,10 @@ workbox.setConfig({
 
 
 workbox.loadModule("workbox-routing")
-workbox.loadModule("workbox-recipes")
+
 workbox.loadModule("workbox-background-sync")
 workbox.loadModule("workbox-strategies")
-workbox.loadModule("workbox-expiration")
+
 
 
 /*
