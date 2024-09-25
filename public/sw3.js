@@ -19,7 +19,7 @@ workbox.routing.registerRoute(
   new workbox.strategies.CacheFirst({
     cacheName: 'cdns',
     plugins: [
-      new workbox.Expiration.ExpirationPlugin({
+      new workbox.ExpirationPlugin.ExpirationPlugin({
         maxEntries: 60,
         maxAgeSeconds:  24 * 60 * 60, // 30 Days
       }),
