@@ -1,7 +1,11 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js');
 
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
+  workbox.recipes.imageCache();
+ workbox.recipes.staticResourceCache();
+ workbox.recipes.googleFontsCache();
+ workbox.recipes.offlineFallback();
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
@@ -73,14 +77,15 @@ const returnFromCache = function (request) {
     });
 };
 
-self.addEventListener("fetch", function (event) {
+/*self.addEventListener("fetch", function (event) {
     event.respondWith(checkResponse(event.request).catch(function () {
         return returnFromCache(event.request);
     }));
     if(!event.request.url.startsWith('http')){
         event.waitUntil(addToCache(event.request));
     }
-});
+});*/
+ 
 /*if (workbox.navigationPreload.isSupported()) {
   workbox.navigationPreload.enable();
 }
@@ -130,16 +135,6 @@ self.addEventListener('fetch', (event) => {
 
   event.respondWith(bgSyncLogic());
 });
-
-/*pageCache();
-
-googleFontsCache();
-
-staticResourceCache();
-
-imageCache();
-
-offlineFallback();
 
 const networkWithFallbackStrategy = new NetworkOnly({
   networkTimeoutSeconds: 5,
