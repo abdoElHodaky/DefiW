@@ -8,7 +8,20 @@ workbox.loadModule("workbox-routing")
 workbox.loadModule("workbox-recipes")
 workbox.loadModule("workbox-background-sync")
 workbox.loadModule("workbox-strategies")
+workbox.loadModule("workbox-Expiration-plugin")
 
+workbox.routing.registerRoute(
+  ({request}) => request.url.includes("cdn") === 'true',
+  new workbox.startegies.CacheFirst({
+    cacheName: 'cdns',
+    plugins: [
+      new workbox.ExpirationPlugin.ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds:  24 * 60 * 60, // 30 Days
+      }),
+    ],
+  })
+);
 
 const queue = new workbox.BackgroundSync.Queue('ApiQueue');
 
