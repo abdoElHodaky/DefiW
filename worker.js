@@ -14,7 +14,7 @@ precacheAndRoute("/manifest.json")
 workbox.setConfig({
     debug:true
 });
-const CACHE="LMS_Cache";
+const CACHE="DEFIW_Cache";
 const preLoad = function () {
     return caches.open(CACHE).then(function (cache) {
         // caching index and important routes
