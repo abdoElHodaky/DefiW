@@ -12,10 +12,10 @@ workbox.loadModule("workbox-Expiration-plugin")
 
 workbox.routing.registerRoute(
   ({request}) => request.url.includes("cdn") === 'true',
-  new workbox.startegies.CacheFirst({
+  new CacheFirst({
     cacheName: 'cdns',
     plugins: [
-      new workbox.ExpirationPlugin.ExpirationPlugin({
+      new ExpirationPlugin({
         maxEntries: 60,
         maxAgeSeconds:  24 * 60 * 60, // 30 Days
       }),
@@ -23,7 +23,7 @@ workbox.routing.registerRoute(
   })
 );
 
-const queue = new workbox.BackgroundSync.Queue('ApiQueue');
+const queue = new Queue('ApiQueue');
 
 self.addEventListener('fetch', event => {
   // Add in your own criteria here to return early if this
