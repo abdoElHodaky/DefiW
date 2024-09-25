@@ -31,7 +31,4 @@ self.addEventListener('fetch', event => {
 
   event.respondWith(bgSyncLogic());
 });
-workbox.recipes.pageCache()
-workbox.recipes.offlineFallback()
-workbox.recipes.staticResourceCache();
-workbox.recipes.imageCache();
+
