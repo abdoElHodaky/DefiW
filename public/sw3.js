@@ -3,14 +3,6 @@ importScripts(
 );
 
 // This will work!
-workbox.routing.registerRoute(
-  ({request}) => request.destination === 'image',
-  new workbox.strategies.CacheFirst()
-);
-
-/*importScripts(
-  'https://storage.googleapis.com/workbox-cdn/releases/7.1.0/workbox-sw.js'
-);
 
 const {registerRoute, NavigationRoute,Route } = workbox.routing;
 const {CacheFirst,NetworkOnly,NetworkFirst} = workbox.strategies;
@@ -25,7 +17,7 @@ workbox.setConfig({
     debug:true
 });
 const CACHE="DefiW_Cache";
-const preLoad = function () {
+/*const preLoad = function () {
     return caches.open(CACHE).then(function (cache) {
         // caching index and important routes
         return cache.addAll(filesToCache);
@@ -35,7 +27,7 @@ const preLoad = function () {
 self.addEventListener("install", function (event) {
     event.waitUntil(preLoad());
 });
-
+*/
 const filesToCache = [
     '/',
     '/offline.html'
@@ -159,7 +151,16 @@ registerRoute(
   })
 );
 
+*/
+workbox.recipes.pageCache();
 
+workbox.recipes.googleFontsCache();
+
+workbox.recipes.staticResourceCache();
+
+workbox.recipes.imageCache();
+
+offlineFallback();
 registerRoute(
   new Route(({url}) => {
   return url.includes("cdn") == true;
