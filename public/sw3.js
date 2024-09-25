@@ -1,10 +1,6 @@
-self.wrkbox={}
-self.addEventListener("install",(event)=>{
-  importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js');
-  self.wrkbox=workbox
+importScripts('/workbox/workbox-v7.1.0/workbox-sw.js');
+
+workbox.setConfig({
+  modulePathPrefix: '/workbox/workbox-v7.1.0/',
+  debug:true
 });
-// This will work!
-workbox.routing.registerRoute(
-  ({request}) => request.destination === 'image',
-  new workbox.strategies.CacheFirst()
-);
