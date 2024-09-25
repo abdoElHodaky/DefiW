@@ -16,17 +16,17 @@ workbox.loadModule("workbox-expiration")
 
 workbox.routing.registerRoute(
   ({request}) => request.url.includes("cdn") == true,
-  new CacheFirst({
+  new workbox.strategies.CacheFirst({
     cacheName: 'cdns',
     plugins: [
-      new ExpirationPlugin({
+      new workbox.Expiration.ExpirationPlugin({
         maxEntries: 60,
         maxAgeSeconds:  24 * 60 * 60, // 30 Days
       }),
     ],
   })
 );
-
+/*
 workbox.routing.registerRoute(
  "/api/",
  new NetworkFirst({
