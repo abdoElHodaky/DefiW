@@ -9,7 +9,8 @@ const {ExpirationPlugin}=workbox.ExpirationPlugin
 const {BackgroundSyncPlugin,Queue}=workbox.BackgroundSyncPlugin
 const {precacheAndRoute} =workbox.precaching
 const queue=new Queue("requests")
-precacheAndRoute(self.__WB_MANIFEST)
+precacheAndRoute("/manifest.json")
+//precacheAndRoute(self.__WB_MANIFEST)
 workbox.setConfig({
     debug:true
 });
