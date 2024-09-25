@@ -15,7 +15,7 @@ workbox.loadModule("workbox-expiration")
 
 
 workbox.routing.registerRoute(
-  ({request}) => request.url.includes("cdn") === 'true',
+  ({request}) => request.url.includes("cdn") == true,
   new CacheFirst({
     cacheName: 'cdns',
     plugins: [
@@ -26,7 +26,20 @@ workbox.routing.registerRoute(
     ],
   })
 );
-/*
+
+workbox.routing.registerRoute(
+ "/api/",
+ new NetworkFirst({
+    cacheName: 'apiC',
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds:  24 * 60 * 60, // 30 Days
+      }),
+    ],
+  })
+);
+
 const queue = new Queue('ApiQueue');
 
 self.addEventListener('fetch', event => {
