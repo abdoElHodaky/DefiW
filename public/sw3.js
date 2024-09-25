@@ -1,4 +1,4 @@
-importScripts('/workbox/workbox-v7.1.0/workbox-sw.js');
+self.importScripts('/workbox/workbox-v7.1.0/workbox-sw.js');
 
 workbox.setConfig({
   modulePathPrefix: '/workbox/workbox-v7.1.0/',
