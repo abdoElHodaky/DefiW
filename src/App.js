@@ -47,7 +47,9 @@ function App() {
       scope:"/",
       type:"module"
     })
-      .then(console.log).catch(console.error)
+      .then(d=>{
+        console.log("Sucess")
+               }).catch(console.error)
   },15000)},[])
   return (
      <BrowserRouter>
