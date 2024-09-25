@@ -3,7 +3,7 @@ self.importScripts('/workbox/workbox-v7.1.0/workbox-sw.js');
 workbox.setConfig({
   modulePathPrefix: '/workbox/workbox-v7.1.0/',
   debug:true,
-  prefix:"DEFIW"
+  prefix:"DEFIW-"
 });
 workbox.loadModule("workbox-routing")
 workbox.loadModule("workbox-recipes")
