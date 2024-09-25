@@ -44,7 +44,8 @@ function App() {
   useEffect(()=>{
     setTimeout(()=>{
     navigator.serviceWorker.register("/sw.js",{
-      scope:"/"
+      scope:"/",
+      type:"module"
     })
       .then(console.log).catch(console.error)
   },15000)},[])
