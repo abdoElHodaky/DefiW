@@ -30,6 +30,6 @@ module.exports = {
       }
     }
   }],
-   swDest: 'sw.js',
+  // swDest: 'sw.js',
    swSrc: 'worker.js'
 };
