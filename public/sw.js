@@ -70,7 +70,8 @@ self.addEventListener("message", (event) => {
     self.skipWaiting();
   }
 });
-/*self.addEventListener('fetch', (event) => {
+*/
+self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith((async () => {
       try {
@@ -90,24 +91,9 @@ self.addEventListener("message", (event) => {
       }
     })());
   }
-});*/
-
-self.addEventListener('fetch', (event) => {
-
-/*
-const networkWithFallbackStrategy = new NetworkOnly({
-  networkTimeoutSeconds: 5,
-  plugins: [
-    {
-      handlerDidError: async () => {
-        return await caches.match("offline.html", {
-          cacheName: CACHE,
-        });
-      },
-    },
-  ],
 });
 
+/*
 // Register the route to handle all navigations.
 registerRoute(new NavigationRoute(networkWithFallbackStrategy));
 registerRoute(
