@@ -62,15 +62,7 @@ self.addEventListener("fetch", function (event) {
     }
 });
  
-/*if (workbox.navigationPreload.isSupported()) {
-  workbox.navigationPreload.enable();
-}
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
-});
-*/
+
 self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith((async () => {
@@ -92,60 +84,3 @@ self.addEventListener('fetch', (event) => {
     })());
   }
 });
-
-/*
-// Register the route to handle all navigations.
-registerRoute(new NavigationRoute(networkWithFallbackStrategy));
-registerRoute(
-  ({request}) => request.destination === 'image',
-  new CacheFirst({
-    plugins: [new CacheableResponsePlugin({statuses: [0, 200]}),
-              new ExpirationPlugin({
-              maxEntries: 60,
-              maxAgeSeconds: 30 * 24 * 60 * 60 }),
-             ],
-  })
-);
-registerRoute(
-  ({request}) => request.destination === 'style',
-  new CacheFirst({
-    cacheName:"styles",
-    plugins: [new CacheableResponsePlugin({statuses: [0, 200]}),
-              new ExpirationPlugin({
-              maxEntries: 60,
-              maxAgeSeconds: 30 * 24 * 60 * 60 }),
-             ],
-  })
-);
-registerRoute(
-  ({request}) => request.destination === 'script',
-  new CacheFirst({
-      cacheName:"scripts",
-      plugins: [new CacheableResponsePlugin({statuses: [0, 200]}),
-              new ExpirationPlugin({
-              maxEntries: 60,
-              maxAgeSeconds: 30 * 24 * 60 * 60 ,
-              
-              }),
-             ],
-  })
-);
-
-
-registerRoute(
-  new Route(({url}) => {
-  return url.includes("cdn") == true;
-}, new NetworkFirst({
-  cacheName:"cdns",
-  plugins: [
-    new CacheableResponsePlugin({
-      statuses: [0, 200]
-    }),
-      new ExpirationPlugin({
-       maxEntries: 60,
-       maxAgeSeconds: 30 * 24 * 60 * 60 ,
-       purgeOnQuotaError: true
-        })
-  ]
-}))
-);
