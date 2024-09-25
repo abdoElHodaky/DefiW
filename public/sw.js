@@ -31,9 +31,7 @@ self.addEventListener("install", function (event) {
     event.waitUntil(preLoad());
 });
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(clients.claim());
-});
+
 
 const filesToCache = [
     "/",
