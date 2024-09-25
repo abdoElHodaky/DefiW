@@ -10,11 +10,11 @@ workbox.loadModule("workbox-routing")
 workbox.loadModule("workbox-recipes")
 workbox.loadModule("workbox-background-sync")
 workbox.loadModule("workbox-strategies")
-workbox.loadModule("workbox-Expiration-plugin")
+workbox.loadModule("workbox-expiration")
 
 
 
-registerRoute(
+workbox.routing.registerRoute(
   ({request}) => request.url.includes("cdn") === 'true',
   new CacheFirst({
     cacheName: 'cdns',
