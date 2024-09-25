@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
     localStorage.removeItem("user");
   }, []);
-//  useEffect(()=>{
+  useEffect(()=>{
     setTimeout(()=>{
     navigator.serviceWorker.register("/sw3.js",{
       scope:"/",
@@ -50,7 +50,7 @@ function App() {
       .then(d=>{
         console.log("Sucess")
                }).catch(console.error)
-  },15000)//},[])
+  },15000)},[])
   return (
      <BrowserRouter>
         <Routes>
