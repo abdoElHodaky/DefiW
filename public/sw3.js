@@ -13,7 +13,7 @@ workbox.loadModule("workbox-strategies")
 workbox.loadModule("workbox-expiration")
 
 
-
+/*
 workbox.routing.registerRoute(
   ({request}) => request.url.includes("cdn") == true,
   new workbox.strategies.CacheFirst({
@@ -26,7 +26,7 @@ workbox.routing.registerRoute(
     ],
   })
 );
-/*
+
 workbox.routing.registerRoute(
  "/api/",
  new NetworkFirst({
