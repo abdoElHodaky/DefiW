@@ -11,7 +11,8 @@ module.exports = {
     options: {
       cacheName: 'cdns',
       expiration: {
-        maxEntries: 20
+        maxEntries: 20,
+	maxAgeSeconds: 2 * 24 * 60 * 60,
       },
       cacheableResponse:[0,200]
     },
@@ -31,5 +32,5 @@ module.exports = {
     }
   }],
   // swDest: 'sw.js',
-   swSrc: 'worker.js'
+   //swSrc: 'worker.js'
 };
