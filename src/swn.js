@@ -1,2 +1,2 @@
-import {registerRoute,Route} from "workbox-routing;
+const {registerRoute,Route}=require("workbox-routing);
 console.log(Route)
