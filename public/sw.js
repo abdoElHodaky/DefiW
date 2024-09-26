@@ -11,6 +11,10 @@ self.workbox?.core.setCacheNameDetails({
   runtime: 'run-time',
   googleAnalytics: 'ga',
 });
+self.addEventListener("install",(event)=>{
+  self.skipWaiting()
+  clients.claim()
+})
 console.log(caches);
 
 
