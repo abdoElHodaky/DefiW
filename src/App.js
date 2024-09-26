@@ -36,8 +36,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app); */
 window.Buffer = window.Buffer || require("buffer").Buffer;
 navigator.serviceWorker.
-  getRegistration("/").then(d=>{if(d)
-   if(d) return d.update()
+  getRegistration("/").then(d=>{if(d) return d.update()
   }).catch(console.log)
 //console.log(analytics)
 function App() {
