@@ -14,7 +14,9 @@ module.exports = {
         maxEntries: 20,
 	maxAgeSeconds: 2 * 24 * 60 * 60,
       },
-      cacheableResponse:[0,200]
+      cacheableResponse:{
+	statuses: [0, 200]
+      }
     },
   },{
     urlPattern: ({request, url}) => url.includes("api")==true,
@@ -22,7 +24,9 @@ module.exports = {
     method:"POST",
     options:{
       cacheName:"apCachePost",
-      cacheableResponse:[0,200],
+      cacheableResponse:{
+	statuses: [0, 200]
+      },
       backgroundSync:{
        name:"Apisync",
        options:{
