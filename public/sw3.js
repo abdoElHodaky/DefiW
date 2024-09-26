@@ -7,38 +7,25 @@ workbox.setConfig({
 
 
 workbox.loadModule("workbox-routing")
-
 workbox.loadModule("workbox-background-sync")
 workbox.loadModule("workbox-strategies")
+//workbox.loadModule("workbox-expiration")
 
 
 
-/*
 workbox.routing.registerRoute(
   ({request}) => request.url.includes("cdn") == true,
-  new workbox.strategies.CacheFirst({
+  new workbox.strategies.NetworkFirst({
     cacheName: 'cdns',
     plugins: [
-      new workbox.ExpirationPlugin.ExpirationPlugin({
-        maxEntries: 60,
-        maxAgeSeconds:  24 * 60 * 60, // 30 Days
-      }),
+     /* new CacheExpiration({
+        maxAgeSeconds: 24 * 60 * 60,
+        maxEntries: 20
+      })*/
     ],
   })
 );
 
-workbox.routing.registerRoute(
- "/api/",
- new NetworkFirst({
-    cacheName: 'apiC',
-    plugins: [
-      new ExpirationPlugin({
-        maxEntries: 60,
-        maxAgeSeconds:  24 * 60 * 60, // 30 Days
-      }),
-    ],
-  })
-);
 
 const queue = new Queue('ApiQueue');
 
