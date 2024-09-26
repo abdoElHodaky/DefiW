@@ -1,2 +1,3 @@
-const {registerRoute,Route}=require("workbox-routing");
-console.log(Route)
+import * as WorkRoute from "workbox-routing";
+console.log(WorkRoute)
+export default {}
