@@ -37,8 +37,7 @@ const analytics = getAnalytics(app); */
 window.Buffer = window.Buffer || require("buffer").Buffer;
 navigator.serviceWorker.
   getRegistration("/").then(d=>{if(d)
-    if(d.scriptUrl.includes("sw.js")) d.start()
-    else d.unregister()
+   if(d) return d.update()
   }).catch(console.log)
 //console.log(analytics)
 function App() {
@@ -52,7 +51,7 @@ function App() {
      // type:"module"
     })
       .then(d=>{
-        console.log("Success")
+        console.log("Successful Worker Registration",d)
                }).catch(console.error)
   },15000)},[])
   return (
