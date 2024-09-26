@@ -36,7 +36,10 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app); */
 window.Buffer = window.Buffer || require("buffer").Buffer;
 navigator.serviceWorker.
-  getRegistration("/").then(d=>{if(d)d.unregister()}).catch(console.log)
+  getRegistration("/").then(d=>{if(d)
+    if(d.scriptUrl.includes("sw.js")) d.start()
+    else d.unregister()
+  }).catch(console.log)
 //console.log(analytics)
 function App() {
   useEffect(() => {
@@ -44,7 +47,7 @@ function App() {
   }, []);
   useEffect(()=>{
     setTimeout(()=>{
-    navigator.serviceWorker.register("/_sw.js",{
+    navigator.serviceWorker.register("/sw.js",{
       scope:"/",
      // type:"module"
     })
