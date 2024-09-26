@@ -1,3 +1,3 @@
-import("workbox-expiration").then(console.log).catch(console.log)
+import("workbox-expiration").then(console.log).
+  catch(console.log);
 
-export default {}
