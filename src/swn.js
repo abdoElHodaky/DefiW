@@ -1,3 +1,3 @@
-import * as WorkRoute from "workbox-routing";
-console.log(WorkRoute)
+import("workbox-expiration").then(console.log).catch(console.log)
+
 export default {}
