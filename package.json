@@ -44,7 +44,7 @@
     "web3": "^1.6.1"
   },
   "scripts": {
-    "client": "DISABLE_ESLINT_PLUGIN=true   craco  start & sh genSW.sh",
+    "client": "DISABLE_ESLINT_PLUGIN=true   craco  start",
     "server": "DISABLE_ESLINT_PLUGIN=true  cd backend & npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": " DISABLE_ESLINT_PLUGIN=true craco test",
