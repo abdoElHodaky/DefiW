@@ -17,5 +17,20 @@ self.addEventListener("install",(event)=>{
   clients.claim()
 })
 
-
+workbox.routing.registerRoute(
+  ({request,url})=>url.includes("fonts")==true,
+  new workbox.strategies.NetworkFirst({
+  cacheName:"fonts",
+  plugins: [
+    new workbox.cacheableResponse.CacheableResponsePlugin({
+      statuses: [0, 200]
+    }),
+      new workbox.expiration.ExpirationPlugin({
+       maxEntries: 60,
+       maxAgeSeconds: 30 * 24 * 60 * 60 ,
+       purgeOnQuotaError: true
+        })
+  ]
+  })
+)
 
