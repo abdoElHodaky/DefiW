@@ -87,6 +87,7 @@
     "tslib": "^2.6.3",
     "url": "^0.11.4",
     "util": "^0.12.5",
+    "imagemin":"^8.0.1",
     "image-minimizer-webpack-plugin":"^4.0.0",
     "imagemin-mozjpeg":"^10.0.0",
     "imagemin-webp":"^8.0.0",
