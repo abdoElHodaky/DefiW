@@ -2,12 +2,12 @@
 const webpack = require('webpack');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const imageOptimizer = require('craco-image-optimizer-plugin');
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 
 module.exports = {
  plugins:[
-  {
+/*  {
       plugin: imageOptimizer,
       // image-webpack-plugin options
       options: {
@@ -30,7 +30,7 @@ module.exports = {
           quality: 75,
         },
       },
-    },
+    },*/
  ],
   style: {
     postcss: {
@@ -66,6 +66,30 @@ module.exports = {
 	    }),
               
             ];
+	    webpackConfig.optimization.minimize = true;
+            webpackConfig.optimization.minimizer.push(
+            new ImageMinimizerPlugin({
+             minimizer: {
+              implementation: ImageMinimizerPlugin.imageminMinify,
+              options: {
+                plugins: [["mozjpeg", { quality: 85 }]],
+             },
+           },
+           generator: [
+            {
+              preset: "webp",
+              implementation: ImageMinimizerPlugin.imageminGenerate,
+              options: {
+                plugins: [
+                  "imagemin-webp",
+                  "imagemin-pngquant",
+                  "imagemin-svgo",
+                ],
+              },
+            },
+          ],
+        })
+      );
             return webpackConfig;
         },
     },
