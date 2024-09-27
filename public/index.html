@@ -54,9 +54,9 @@
     <script async src="//cdn.jsdelivr.net/npm/eruda"></script>
     <script async src="https://unpkg.com/browse/antd@4.16.5/dist/antd.js
 "></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>eruda.init();</script>
-    <script>
+    <script async src="https://cdn.tailwindcss.com"></script>
+    <script defer>eruda.init();</script>
+    <script defer>
       if (window.deferredPrompt) {
             console.log("inside window.deferredPromp if condition");
             window.deferredPrompt.prompt();
