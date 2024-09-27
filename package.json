@@ -43,7 +43,6 @@
     "web-vitals": "^1.0.1",
     "web3": "^1.6.1",
     "cssnano":"^6.1.2",
-    "craco-image-optimizer-plugin":"^0.0.5"
   },
   "scripts": {
     "client": "DISABLE_ESLINT_PLUGIN=true   craco  start",
@@ -87,7 +86,8 @@
     "tailwindcss": "^3.4.10",
     "tslib": "^2.6.3",
     "url": "^0.11.4",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "image-minimizer-webpack-plugin":"^4.0.0",
   },
   "overrides": {
     "postcss-flexbugs-fixes": {}
