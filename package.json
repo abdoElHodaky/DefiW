@@ -17,6 +17,7 @@
     "country-data": "0.0.31",
     "country-list": "^2.2.0",
     "crypto": "^1.0.1",
+    "cssnano": "^6.1.2",
     "detect-emoji-support": "^0.1.7",
     "firebase": "^9.5.0",
     "framer-motion": "^4.1.17",
@@ -41,8 +42,7 @@
     "request": "^2.88.2",
     "sqlite3": "^5.1.6",
     "web-vitals": "^1.0.1",
-    "web3": "^1.6.1",
-    "cssnano":"^6.1.2"
+    "web3": "^1.6.1"
   },
   "scripts": {
     "client": "DISABLE_ESLINT_PLUGIN=true   craco  start",
@@ -72,8 +72,14 @@
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "buffer": "^6.0.3",
+    "craco-plugin-single-spa-application": "^2.0.1",
     "crypto-browserify": "^3.12.0",
     "https-browserify": "^1.0.0",
+    "image-minimizer-webpack-plugin": "^4.0.0",
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-svgo": "^10.0.1",
+    "imagemin-webp": "^8.0.0",
     "node-polyfill-webpack-plugin": "^4.0.0",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
@@ -86,12 +92,7 @@
     "tailwindcss": "^3.4.10",
     "tslib": "^2.6.3",
     "url": "^0.11.4",
-    "util": "^0.12.5",
-    "imagemin":"^8.0.1",
-    "image-minimizer-webpack-plugin":"^4.0.0",
-    "imagemin-mozjpeg":"^10.0.0",
-    "imagemin-webp":"^8.0.0",
-    "imagemin-svgo":"^10.0.1"
+    "util": "^0.12.5"
   },
   "overrides": {
     "postcss-flexbugs-fixes": {}
