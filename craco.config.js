@@ -3,34 +3,22 @@ const webpack = require('webpack');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-
+const SingleSpaAppcracoPlugin = require('craco-plugin-single-spa-application');
 
 module.exports = {
  plugins:[
-/*  {
-      plugin: imageOptimizer,
-      // image-webpack-plugin options
-      options: {
-        mozjpeg: {
-          progressive: true,
-          quality: 65,
-        },
-	optipng: {
-          enabled: true,
-        },
-        pngquant: {
-          quality: [0.65, 0.9],
-          speed: 4,
-        },
-        gifsicle: {
-          interlaced: false,
-        },
-        // the webp option will enable WEBP
-        webp: {
-          quality: 75,
-        },
-      },
-    },*/
+  {
+  plugin: SingleSpaAppcracoPlugin,
+  options: {
+    orgName: "my-org",
+    projectName: "defiw-app",
+    entry: "src/index.js", //defaults to src/index.js,
+    orgPackagesAsExternal: false, // defaults to false. marks packages that has @my-org prefix as external so they are not included in the bundle
+    reactPackagesAsExternal: true, // defaults to true. marks react and react-dom as external so they are not included in the bundle
+    minimize: true, // defaults to false, sets optimization.minimize value
+    outputFilename: "defiw-spa-build.js" // defaults to the values set for the "orgName" and "projectName" properties, in this case "my-org-my-app.js"
+  },
+  }
  ],
   style: {
     postcss: {
