@@ -3,12 +3,12 @@ const webpack = require('webpack');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-const SingleSpaAppcracoPlugin = require('craco-plugin-single-spa-application');
+//const SingleSpaAppcracoPlugin = require('craco-plugin-single-spa-application');
 
 module.exports = {
  plugins:[
   {
-  plugin: SingleSpaAppcracoPlugin,
+ /* plugin: SingleSpaAppcracoPlugin,
   options: {
     orgName: "my-org",
     projectName: "defiw-app",
@@ -18,7 +18,7 @@ module.exports = {
     minimize: false, // defaults to false, sets optimization.minimize value
     outputFilename: "defiw-spa.js" // defaults to the values set for the "orgName" and "projectName" properties, in this case "my-org-my-app.js"
   },
-  }
+  }*/
  ],
   style: {
     postcss: {
