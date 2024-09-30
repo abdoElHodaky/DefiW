@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-//const SingleSpaAppcracoPlugin = require('craco-plugin-single-spa-application');
+const {GenerateSW} = require('workbox-webpack-plugin');
 
 module.exports = {
  plugins:[
@@ -52,7 +52,77 @@ module.exports = {
               new NodePolyfillPlugin({
                additionalAliases: ['process', 'Buffer'],
 	    }),
-              
+              new GenerateSW({
+	mode:"development",
+	directoryIndex: 'public/',
+        exclude: [
+          /\.(?:png|jpg|jpeg|svg)$/,
+          // Ignore the mix.js that's being generated 
+          
+      ],
+	//navigateFallback:"/offline.html",
+	runtimeCaching: [
+    {
+        urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+
+              // Apply a cache-first strategy.
+        handler: 'CacheFirst',
+        options: {
+                  // Use a custom cache name.
+          cacheName: 'images',
+          expiration: {
+            maxEntries: 20,
+	        maxAgeSeconds: 2 * 24 * 60 * 60,
+          }
+        }
+    },
+    {
+    urlPattern:/*"https://cdn.*.com/**" */({request, url}) =>url.includes("cdn")==true,
+    handler: 'NetworkFirst',
+    options: {
+      cacheName: 'cdns',
+      expiration: {
+        maxEntries: 20,
+	maxAgeSeconds: 2 * 24 * 60 * 60,
+      },
+      cacheableResponse:{
+	statuses: [0, 200]
+      }
+    },
+  },{
+    urlPattern: ({request, url}) => request.method.toLowerCase()=="post",
+    handler:"NetworkOnly",
+    method:"POST",
+    options:{
+      cacheName:"apCachePost",
+      cacheableResponse:{
+	statuses: [0, 200]
+      },
+      backgroundSync:{
+       name:"Apisync",
+       options:{
+    	maxRetentionTime:24*60*2
+       }
+      }
+    }
+  },{
+    urlPattern:/*"https://fonts.*.com/**"*/ ({request, url}) =>url.includes("fonts")==true,
+    handler: 'NetworkFirst',
+    options: {
+      cacheName: 'cdns',
+      expiration: {
+        maxEntries: 20,
+	maxAgeSeconds: 2 * 24 * 60 * 60,
+      },
+      cacheableResponse:{
+	statuses: [0, 200]
+      }
+    }
+  }],
+   swDest: 'sw.js',  
+    skipWaiting: true,
+    clientsClaim: true,
+	      })
             ];
 	    webpackConfig.optimization.minimize = true;
             webpackConfig.optimization.minimizer.push(
