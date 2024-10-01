@@ -21,7 +21,7 @@ import {
   Route
 } from "react-router-dom";
 import { initializeApp } from "firebase/app";
-import * as registerSW from "./swreg";
+import  registerSW from "./swreg";
 /*import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
