@@ -7,8 +7,8 @@ const {GenerateSW} = require('workbox-webpack-plugin');
 
 module.exports = {
  plugins:[
-  {
- /* plugin: SingleSpaAppcracoPlugin,
+  /*{
+  plugin: SingleSpaAppcracoPlugin,
   options: {
     orgName: "my-org",
     projectName: "defiw-app",
