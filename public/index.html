@@ -56,20 +56,5 @@
 "></script>
     <script async src="https://cdn.tailwindcss.com"></script>
     <script defer>eruda.init();</script>
-    <script defer>
-      if (window.deferredPrompt) {
-            console.log("inside window.deferredPromp if condition");
-            window.deferredPrompt.prompt();
-            window.deferredPrompt.userChoice.then((choiceResult) => {
-               if (choiceResult.outcome === "accepted") { 
-                  removeButton();                   
-                  console.log("User accepted the install prompt");
-               } else {
-                  isInstalledState(false);
-                  console.log("User dismissed the install prompt");
-               }
-           });
-      }
-    </script>
   </body>
 </html>
