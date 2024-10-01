@@ -1,152 +1,96 @@
-// This optional code is used to register a service worker.
-// register() is not called by default.
+import {Workbox} from "workbox-window";
 
-// This lets the app load faster on subsequent visits in production, and gives
-// it offline capabilities. However, it also means that developers (and users)
-// will only see deployed updates on subsequent visits to a page, after all the
-// existing tabs open on the page have been closed, since previously cached
-// resources are updated in the background.
 
-// To learn more about the benefits of this model and instructions on how to
-// opt-in, read https://cra.link/PWA
-import { serviceWorkerRegistrationEnhancements } from './swregenchance'
+//import {Workbox} from "workbox-window";
+export default function{
+if ("serviceWorker" in navigator) { 
+  //  const  {Workbox}=require("workbox-window");
+    const wb = new Workbox('/sw.js');
 
-const DEBUG=false;
-const isLocalhost = Boolean(
-  window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.0/8 are considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
-)
+wb.addEventListener('activated', event => {
+  // `event.isUpdate` will be true if another version of the service
+  // worker was controlling the page when this version was registered.
+  if (!event.isUpdate) {
+    console.log('Service worker activated for the first time!');
+    // If your service worker is configured to precache assets, those
+    // assets should all be available now.
+  }
+    const urlsToCache = [
+    location.href,
+    ...performance.getEntriesByType('resource').map(r => r.name),
+  ];
+  // Send that list of URLs to your router in the service worker.
+  wb.messageSW({
+    type: 'CACHE_URLS',
+    payload: {urlsToCache},
+  });
+});
+wb.addEventListener('message', event => {
+  if (event.data.type === 'CACHE_UPDATED') {
+    const {updatedURL} = event.data.payload;
 
-export function register(config) {
-  if ( 'serviceWorker' in navigator) {
-    // The URL constructor is available in all browsers that support SW.
-    const publicUrl = new URL("%PUBLIC_URL%", window.location.href)
-    if (publicUrl.origin !== window.location.origin) {
-      // Our service worker won't work if PUBLIC_URL is on a different origin
-      // from what our page is served on. This might happen if a CDN is used to
-      // serve assets; see https://github.com/facebook/create-react-app/issues/2374
-      return
+    console.log(`A newer version of ${updatedURL} is available!`);
+  }
+});
+// Register the service worker after event listeners have been added.
+wb.register();
+/*
+setTimeout(()=>{
+ navigator.serviceWorker.register('/sw.js').then(d=>{
+     console.log("Worker Registration Successful",d)
+ }).catch(console.log);
+},10000)
+*/
+    installPWA()
+  } else {
+     console.error("Service workers are not supported.");
+  }
+}
+    window.addEventListener("beforeinstallprompt", (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+
+        // Stash the event so it can be triggered later.
+        window.deferredPrompt = e;
+        console.log("Registerd event");
+        // Update UI notify the user they can install the PWA
+        window.localStorage.setItem("pwainstalled", "false");
+        //this.showInstallPromotion();
+    });
+    window.addEventListener("appinstalled", (evt) => {
+        // Log install to analytics
+        console.log("INSTALL: Success");
+        window.localStorage.setItem("pwainstalled", "true");
+    });
+
+    function installButtonDisplay() {
+        var btn = document.createElement("BUTTON");
+        btn.setAttribute("id", "install-button");
+        btn.innerHTML = "Download LSM-App";
+        btn.setAttribute("class","bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center")
+        btn.onclick = function() {
+          installPWA();
+        }
+        document.querySelector("#auth").appendChild(btn);
+    }
+    function installPWA() {
+        if (window.deferredPrompt) {
+            console.log("inside window.deferredPromp if condition");
+            window.deferredPrompt.prompt();
+            window.deferredPrompt.userChoice.then((choiceResult) => {
+               if (choiceResult.outcome === "accepted") { 
+                  removeButton();                   
+                  console.log("User accepted the install prompt");
+               } else {
+                  isInstalledState(false);
+                  console.log("User dismissed the install prompt");
+               }
+           });
+        }
+    }
+    function removeButton() {
+        var elem = document.getElementById('install-button');
+        elem.parentNode.removeChild(elem);
     }
 
-    window.addEventListener('load', () => {
-      const swUrl = `${publicUrl}/sw.js`
 
-      if (isLocalhost) {
-        // This is running on localhost. Let's check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, config)
-
-        // Add some additional logging to localhost, pointing developers to the
-        // service worker/PWA documentation.
-        navigator.serviceWorker.ready.then(() => {
-          if (DEBUG)
-            console.log(
-              'serviceWorkerRegistration.js - This web app is being served cache-first by a service ' +
-                'worker. To learn more, visit https://cra.link/PWA'
-            )
-        })
-      } else {
-        // Is not localhost. Just register service worker
-        registerValidSW(swUrl, config)
-      }
-    })
-  }
-}
-
-function registerValidSW(swUrl, config) {
-  navigator.serviceWorker
-    .register(swUrl)
-    .then((registration) => {
-      // -----------------------------
-      // my additional functionality
-      // -----------------------------
-      serviceWorkerRegistrationEnhancements(config, registration)
-      // -----------------------------
-
-      registration.onupdatefound = () => {
-        const installingWorker = registration.installing
-        if (installingWorker == null) {
-          return
-        }
-        installingWorker.onstatechange = () => {
-          if (installingWorker.state === 'installed') {
-            if (navigator.serviceWorker.controller) {
-              // At this point, the updated precached content has been fetched,
-              // but the previous service worker will still serve the older
-              // content until all client tabs are closed.
-              if (DEBUG)
-                console.log(
-                  'serviceWorkerRegistration.js - New content is available and will be used when all ' +
-                    'tabs for this page are closed. See https://cra.link/PWA.'
-                )
-
-              // Execute callback
-              if (config && config.onUpdate) {
-                config.onUpdate(registration)
-              }
-            } else {
-              // At this point, everything has been precached.
-              // It's the perfect time to display a
-              // "Content is cached for offline use." message.
-              if (DEBUG)
-                console.log(
-                  'serviceWorkerRegistration.js - Content is cached for offline use.'
-                )
-
-              // Execute callback
-              if (config && config.onSuccess) {
-                config.onSuccess(registration)
-              }
-            }
-          }
-        }
-      }
-    })
-    .catch((error) => {
-      console.error('Error during service worker registration:', error)
-    })
-}
-
-function checkValidServiceWorker(swUrl, config) {
-  // Check if the service worker can be found. If it can't reload the page.
-  fetch(swUrl, {
-    headers: { 'Service-Worker': 'script' },
-  })
-    .then((response) => {
-      // Ensure service worker exists, and that we really are getting a JS file.
-      const contentType = response.headers.get('content-type')
-      if (
-        response.status === 404 ||
-        (contentType != null && contentType.indexOf('javascript') === -1)
-      ) {
-        // No service worker found. Probably a different app. Reload the page.
-        navigator.serviceWorker.ready.then((registration) => {
-          registration.unregister().then(() => {
-            window.location.reload()
-          })
-        })
-      } else {
-        // Service worker found. Proceed as normal.
-        registerValidSW(swUrl, config)
-      }
-    })
-    .catch(() => {
-      console.log('No internet connection found. App is running in offline mode.')
-    })
-}
-
-export function unregister() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready
-      .then((registration) => {
-        registration.unregister()
-      })
-      .catch((error) => {
-        console.error(error.message)
-      })
-  }
-}
