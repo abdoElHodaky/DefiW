@@ -10,11 +10,8 @@ if ("serviceWorker" in navigator) {
 wb.addEventListener('activated', event => {
   // `event.isUpdate` will be true if another version of the service
   // worker was controlling the page when this version was registered.
-  if (!event.isUpdate) {
-    console.log('Service worker activated for the first time!');
-    // If your service worker is configured to precache assets, those
-    // assets should all be available now.
-  }
+  if (!event.isUpdate) console.log('Service worker activated for the first time!');
+  if(event.isUpdate)  console.log('Service worker updated!');
     const urlsToCache = [
     location.href,
     ...performance.getEntriesByType('resource').map(r => r.name),
