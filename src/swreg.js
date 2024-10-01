@@ -2,7 +2,7 @@ import {Workbox} from "workbox-window";
 
 
 //import {Workbox} from "workbox-window";
-export default function{
+export default function(){
 if ("serviceWorker" in navigator) { 
   //  const  {Workbox}=require("workbox-window");
     const wb = new Workbox('/sw.js');
