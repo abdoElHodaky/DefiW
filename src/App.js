@@ -21,6 +21,7 @@ import {
   Route
 } from "react-router-dom";
 import { initializeApp } from "firebase/app";
+import * as registerSW from "./swreg";
 /*import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -45,13 +46,7 @@ function App() {
   }, []);
   useEffect(()=>{
     setTimeout(()=>{
-    navigator.serviceWorker.register("/sw.js",{
-      scope:"/",
-     // type:"module"
-    })
-      .then(d=>{
-        console.log("Successful Worker Registration",d)
-               }).catch(console.error)
+     registerSW()
   },15000)},[])
   return (
      <BrowserRouter>
