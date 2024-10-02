@@ -28,21 +28,21 @@ function Roadmap() {
 
               <Row  className="hidden md:flex">
                 <Col span={2} offset={1}>
-                    <img src="/assets/img/check.png" className="w-full"/>
+                    <img loading="lazy" src="/assets/img/check.png" className="w-full"/>
                 </Col>
                 <Col span={8} >
                   <div className="h-1/2  border-b-2 border-dashed border-gray-200" >
                   </div>
                 </Col>
                 <Col span={2} >
-                     <img src="/assets/img/check.png" className="w-full"/>
+                     <img loading="lazy" src="/assets/img/check.png" className="w-full"/>
                 </Col>
                 <Col span={8}>
                   <div className="h-1/2  border-b-2 border-dashed border-gray-200" >
                   </div>
                 </Col>
                 <Col span={2} >
-                     <img src="/assets/img/check.png" className="w-full"/>
+                     <img loading="lazy" src="/assets/img/check.png" className="w-full"/>
                 </Col>
 
                 <Col span={4}>
@@ -60,17 +60,17 @@ function Roadmap() {
 
               <Row className="mt-8 md:hidden">
                   <Col span={6} offset={9}>
-                      <img src="/assets/img/check.png" className="w-1/2 m-auto"/>
+                      <img loading="lazy" src="/assets/img/check.png" className="w-1/2 m-auto"/>
                       <span className="text-lg font-bold">{t('Create an account')}</span>
                       <div className="w-1/2 h-20 border-r-2 border-dashed border-gray-200" >
                       </div>
 
-                      <img src="/assets/img/check.png" className="w-1/2 m-auto"/>
+                      <img loading="lazy" src="/assets/img/check.png" className="w-1/2 m-auto"/>
                       <span className="text-lg font-bold">{t('Verify your account')}</span>
                       <div className="w-1/2 h-20 border-r-2 border-dashed border-gray-200" >
                       </div>
 
-                      <img src="/assets/img/check.png" className="w-1/2 m-auto"/>
+                      <img loading="lazy" src="/assets/img/check.png" className="w-1/2 m-auto"/>
                       <span className="text-lg font-bold">{t('Start buying and selling')}</span>
                       
                   </Col>
