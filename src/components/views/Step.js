@@ -26,7 +26,7 @@ function Step() {
           stepData.map((item,idx)=>(
             <div key={idx} className="w-full md:w-1/3 mb-8 text-center inline-block p-4">
               <div className="shadow  h-full w-full p-4">
-              <img src={item.picUrl} className="w-1/2 inline-block"/><br />
+              <img loading="lazy" src={item.picUrl} className="w-1/2 inline-block"/><br />
               <span className="text-lg ">{item.step}</span><br />
               <span className="text-xl font-bold">{item.subtitle}</span><br />
              </div>
