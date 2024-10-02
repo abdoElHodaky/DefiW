@@ -20,7 +20,7 @@ function TouchCard() {
           className="touchCard w-full md:w-1/4 p-4 text-center "
         >
         
-          <img src={item.url} className="w-1/3 inline"/>
+          <img loading="lazy" src={item.url} className="w-1/3 inline"/>
           <p className="m-4 font-bold text-lg">{item.title}</p>
           <p className="text-md">{item.content}</p>
         </motion.div>
