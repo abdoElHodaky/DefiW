@@ -7,18 +7,7 @@ const {GenerateSW} = require('workbox-webpack-plugin');
 
 module.exports = {
  plugins:[
-  /*{
-  plugin: SingleSpaAppcracoPlugin,
-  options: {
-    orgName: "my-org",
-    projectName: "defiw-app",
-    entry: "src/index.js", //defaults to src/index.js,
-    orgPackagesAsExternal: false, // defaults to false. marks packages that has @my-org prefix as external so they are not included in the bundle
-    reactPackagesAsExternal: true, // defaults to true. marks react and react-dom as external so they are not included in the bundle
-    minimize: false, // defaults to false, sets optimization.minimize value
-    outputFilename: "defiw-spa.js" // defaults to the values set for the "orgName" and "projectName" properties, in this case "my-org-my-app.js"
-  },
-  }*/
+  
  ],
   style: {
     postcss: {
@@ -32,23 +21,10 @@ module.exports = {
   webpack: {
         configure: (webpackConfig) => {
 	  webpackConfig.resolve.plugins = webpackConfig.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
-         /*   webpackConfig.resolve.fallback = {
-                crypto: require.resolve('crypto-browserify'),
-                buffer: require.resolve('buffer/'),
-                stream: require.resolve('stream-browserify'),
-                https: require.resolve('https-browserify'),
-                os: require.resolve('os-browserify/browser'),
-                http: require.resolve('stream-http'),
-                assert:require.resolve("assert/"),
-               // "process/browser": require.resolve('process/browser'),
-           
-            };*/
+       
             webpackConfig.plugins = [
                 ...webpackConfig.plugins,
-               /*new webpack.ProvidePlugin({
-                    process: 'process/browser',
-                    Buffer: ["buffer", "Buffer"],
-                }),*/
+               
               new NodePolyfillPlugin({
                additionalAliases: ['process', 'Buffer'],
 	    }),
@@ -148,6 +124,28 @@ module.exports = {
           ],
         })
       );
+		
+     webpackConfig.optimization.splitChunks= {
+      chunks: 'async',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
             return webpackConfig;
         },
     },
