@@ -145,7 +145,7 @@ module.exports = {
           reuseExistingChunk: true,
         },
       },
-    },
+    };
             return webpackConfig;
         },
     },
