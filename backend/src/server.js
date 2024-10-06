@@ -31,6 +31,7 @@ app.use(cookieParser());
 app.use(cors());
 // Enable pre-flight
 app.options("*", cors());
+app.use(express.static(process.cwd()+"/../build/"));
 app.use(
     session({
       key: "user_sid",
@@ -51,7 +52,6 @@ app.use(`/api/wallets/`, walletRouter);
 app.use(`/api/subscribers`, subscriberRouter);
 app.use(`/api/ieo`, ieo);
 app.use(`/api/p2p`, p2p);
-app.use(express.static(path.join(process.cwd(),"/public/")));
 //app.use(express.static("/backend/public/"));
 
 // 404 error
