@@ -137,11 +137,13 @@ module.exports = {
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
+	  filename: '[name].bundle.js',
           reuseExistingChunk: true,
         },
         default: {
           minChunks: 2,
           priority: -20,
+	  filename: '[name].bundle.js',
           reuseExistingChunk: true,
         },
       },
