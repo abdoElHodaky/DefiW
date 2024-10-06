@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(cors());
 // Enable pre-flight
 app.options("*", cors());
-app.use(express.static(process.cwd()+"/../build/"));
+app.use("/",express.static(process.cwd()+"/../build/"));
 app.use(
     session({
       key: "user_sid",
