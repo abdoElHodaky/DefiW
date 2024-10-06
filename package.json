@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@vitejs/plugin-react": "^4.3.2",
     "antd": "^4.16.13",
     "axios": "^1.4.0",
     "bip39": "^3.0.4",
@@ -41,6 +42,7 @@
     "recharts": "^2.1.6",
     "request": "^2.88.2",
     "sqlite3": "^5.1.6",
+    "vite-plugin-pwa": "^0.20.5",
     "web-vitals": "^1.0.1",
     "web3": "^1.6.1",
     "workbox-window": "^7.1.0"
@@ -93,6 +95,7 @@
     "tslib": "^2.6.3",
     "url": "^0.11.4",
     "util": "^0.12.5",
+    "vite": "^5.4.8",
     "workbox-webpack-plugin": "^7.1.0"
   },
   "overrides": {
