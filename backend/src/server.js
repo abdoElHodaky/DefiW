@@ -51,13 +51,9 @@ app.use(`/api/wallets/`, walletRouter);
 app.use(`/api/subscribers`, subscriberRouter);
 app.use(`/api/ieo`, ieo);
 app.use(`/api/p2p`, p2p);
-app.use(express.static(path.join(process.cwd(),"/backend/public/")));
-app.use(express.static("/backend/public/"));
+app.use(express.static(path.join(process.cwd(),"/public/")));
+//app.use(express.static("/backend/public/"));
 
-app.use((req, res, next) => {
-//  res.end("56")
-  res.sendFile(path.join(process.cwd(), "/public/","index.html"));
-});
 // 404 error
 app.all('*', (req, res, next) => {
     const err = new HttpException(404, 'Endpoint Not Found');
