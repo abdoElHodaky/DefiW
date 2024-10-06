@@ -1,0 +1,45 @@
+{
+  "short_name": "MGL",
+  "name": "MGL",
+  "id":"MGL_345",
+  "description": "App for Coin Trading",
+  "iconPath": "favicon32.png",
+  "icons": [
+    {
+      "src": "favicon32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },{
+      "src":"logo192.png",
+      "sizes":"192x192",
+      "type":"image/png"
+     },
+    {
+      "src":"logo512.png",
+      "sizes":"512x512",
+      "type":"image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "orientation": "natural",
+  "scope": "/",
+  "dir": "auto",
+  "categories": [
+    "business",
+    "finance",
+    "shopping"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 100
+  },
+  "display_override": [
+    "browser",
+    "window-controls-overlay",
+    "minimal-ui",
+    "standalone"
+  ],
+  "launch_handler":"auto",
+}
