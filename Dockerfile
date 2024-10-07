@@ -16,5 +16,5 @@ RUN mkdir -p backend/public
 #RUN yarn install && \npm run client && \cp -r build/. backend/public && \
 RUN cd backend && npm install
 EXPOSE 3000 
-CMD ["node","src/server.js"]
+CMD ["sh", "-c","cd backend ; node src/server.js"]
 #CMD ["/usr/bin/supervisord","-c","./supervisord.conf"]
