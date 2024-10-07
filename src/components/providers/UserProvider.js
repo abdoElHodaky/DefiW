@@ -8,9 +8,9 @@ import Wallet from "../../utils/wallet";
 
 const userContextTemplate = {
     useInfo: String,
-    userRegister: (requestData: Object) => {},
-    sendEmail: (requestData: Object) => {},
-    login: (requestData: Object) => {},
+    userRegister: (requestData) => {},
+    sendEmail: (requestData) => {},
+    login: (requestData) => {},
     jwtInfo: String,
     wallet: Wallet
 }
