@@ -4,12 +4,12 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const {GenerateSW} = require('workbox-webpack-plugin');
-//const CracoSwcPlugin = require('craco-swc');
+const CracoSwcPlugin = require('craco-swc');
 
 module.exports = {
  plugins:[
  // {
-    //  plugin: CracoSwcPlugin,
+     CracoSwcPlugin
      /* options: {
         swcLoaderOptions: {
           jsc: {
