@@ -8,7 +8,7 @@ const {GenerateSW} = require('workbox-webpack-plugin');
 
 module.exports = {
  plugins:[
-  {
+ // {
     //  plugin: CracoSwcPlugin,
      /* options: {
         swcLoaderOptions: {
@@ -24,7 +24,7 @@ module.exports = {
           }
         }
       }*/
-    }
+   // }
  ],
   style: {
     postcss: {
@@ -161,7 +161,7 @@ module.exports = {
           minChunks: 2,
           priority: -20,
 	  filename: '[name].bundle.js',
-          reuseExistingChunk: true,
+          //reuseExistingChunk: true,
         },
       },
     };
