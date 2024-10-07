@@ -7,6 +7,8 @@
     "@ant-design/icons": "^4.7.0",
     "@ant-design/plots": "^2.2.8",
     "@craco/craco": "^7.1.0",
+    "@swc/cli": "^0.4.1-nightly.20240914",
+    "@swc/core": "^1.7.26",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -97,6 +99,7 @@
     "url": "^0.11.4",
     "util": "^0.12.5",
     "vite": "^5.4.8",
+    "vite-plugin-node-polyfills": "^0.22.0",
     "workbox-webpack-plugin": "^7.1.0"
   },
   "overrides": {
