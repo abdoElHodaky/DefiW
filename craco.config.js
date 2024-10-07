@@ -10,7 +10,7 @@ module.exports = {
  plugins:[
   {
       plugin: CracoSwcPlugin,
-      options: {
+     /* options: {
         swcLoaderOptions: {
           jsc: {
             externalHelpers: true,
@@ -23,7 +23,7 @@ module.exports = {
             }
           }
         }
-      }
+      }*/
     }
  ],
   style: {
