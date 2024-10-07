@@ -14,7 +14,7 @@ module.exports = {
         swcLoaderOptions: {
           jsc: {
             externalHelpers: true,
-            target: 'es2015',
+            target: 'es6',
             parser: {
               syntax: 'ecmascript',
               jsx: true,
